@@ -18,7 +18,7 @@
 [![Render](https://img.shields.io/badge/Render-000000?style=for-the-badge&logo=render&logoColor=white)](https://render.com/)
 
 ## Installation
-https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black
+
 ## Usage
 
 
