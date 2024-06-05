@@ -29,7 +29,7 @@ Made by:
 
             Hunter - https://github.com/DeceitfulDragon
 
-            Gordon - 
+            Gordon - https://github.com/pandord24
 
             Adrian - 
 
