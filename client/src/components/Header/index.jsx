@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
+// import logo from "../assets/SVG1.svg";
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -17,7 +20,7 @@ export default function Example() {
                 <div className="flex lg:flex-1">
                     <a href="#" className="-m-1.5 p-1.5">
                         <span className="sr-only">Coast to Coast</span>
-                        <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+                        {/* <svg className="h-8 w-auto" src={logo} alt="Coast to Coast Logo" /> */}
                     </a>
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
@@ -28,11 +31,11 @@ export default function Example() {
                     ))}
                 </div>
                 <div className="flex flex-1 items-center justify-end gap-x-6">
-                    <a href="#" className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900">
+                    <a href="./Login" className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900">
                         Log in
                     </a>
                     <a
-                        href="#"
+                        href="./Signup"
                         className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                         Sign up
