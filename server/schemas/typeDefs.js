@@ -1,0 +1,73 @@
+const { gql } = require('apollo-server-express');
+
+const typeDefs = gql`
+  type User {
+    id: ID!
+    username: String!
+    email: String!
+    trips: [Trip]
+  }
+
+  type Trip {
+    id: ID!
+    title: String!
+    description: String
+    startDate: String!
+    endDate: String!
+    itineraries: [Itinerary]
+    expenses: [Expense]
+  }
+
+  type Itinerary {
+    id: ID!
+    date: String!
+    activities: [Activity]
+  }
+
+  type Activity {
+    id: ID!
+    title: String!
+    description: String
+    location: String
+    startTime: String!
+    endTime: String!
+    expense: Expense
+  }
+
+  type Expense {
+    id: ID!
+    description: String!
+    amount: Float!
+    date: String!
+    category: String!
+  }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  type Query {
+    users: [User]
+    user(id: ID!): User
+    trips: [Trip]
+    trip(id: ID!): Trip
+    itineraries(tripId: ID!): [Itinerary]
+    itinerary(id: ID!): Itinerary
+    activities(itineraryId: ID!): [Activity]
+    activity(id: ID!): Activity
+    expenses(tripId: ID!): [Expense]
+    expense(id: ID!): Expense
+  }
+
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    addTrip(userId: ID!, title: String!, description: String, startDate: String!, endDate: String!): Trip
+    addItinerary(tripId: ID!, date: String!): Itinerary
+    addActivity(itineraryId: ID!, title: String!, description: String, location: String, startTime: String!, endTime: String!): Activity
+    addExpense(tripId: ID!, description: String!, amount: Float!, date: String!, category: String!): Expense
+  }
+`;
+
+module.exports = typeDefs;
