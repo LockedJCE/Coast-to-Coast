@@ -1,6 +1,6 @@
-const { AuthenticationError } = require('apollo-server-express');
+const { AuthenticationError, signToken } = require('../utils/auth');
 const { User, Trip, Itinerary, Activity, Expense } = require('../models');
-const { signToken } = require('../utils/auth');
+
 
 const resolvers = {
   Query: {
@@ -25,13 +25,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw  AuthenticationError;
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw  AuthenticationError;
       }
 
       const token = signToken(user);

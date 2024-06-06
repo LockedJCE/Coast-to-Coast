@@ -2,14 +2,14 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
-    id: ID!
+    _id: ID!
     username: String!
     email: String!
     trips: [Trip]
   }
 
   type Trip {
-    id: ID!
+    _id: ID!
     title: String!
     description: String
     startDate: String!
@@ -19,13 +19,13 @@ const typeDefs = gql`
   }
 
   type Itinerary {
-    id: ID!
+    _id: ID!
     date: String!
     activities: [Activity]
   }
 
   type Activity {
-    id: ID!
+    _id: ID!
     title: String!
     description: String
     location: String
@@ -35,7 +35,7 @@ const typeDefs = gql`
   }
 
   type Expense {
-    id: ID!
+    _id: ID!
     description: String!
     amount: Float!
     date: String!
