@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
-// import logo from "../assets/SVG1.svg";
+import CoastLogo from "../../assets/plane2.svg";
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
     { name: 'Explore', href: '#' },
+    { name: 'Calendar', href: './Calendar' },
     { name: 'My Trips', href: '#' },
-    { name: 'Marketplace', href: '#' },
 ]
 
-export default function Example() {
+export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
@@ -20,7 +20,7 @@ export default function Example() {
                 <div className="flex lg:flex-1">
                     <a href="#" className="-m-1.5 p-1.5">
                         <span className="sr-only">Coast to Coast</span>
-                        {/* <svg className="h-8 w-auto" src={logo} alt="Coast to Coast Logo" /> */}
+                        <svg className="h-8 w-auto" src={CoastLogo} alt="Coast to Coast Logo" />
                     </a>
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
