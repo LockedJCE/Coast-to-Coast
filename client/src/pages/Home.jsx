@@ -1,36 +1,38 @@
 import { useQuery } from '@apollo/client';
 import { CurrencyDollarIcon, FingerPrintIcon, ListBulletIcon, NewspaperIcon } from '@heroicons/react/24/outline'
+import CoastLogo from "../assets/SVG1.svg";
+import Hero from '../components/Hero';
 
 const features = [
   {
     name: 'Detailed Travel Planning',
     description:
-      'Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.',
+      'Our app empowers you to meticulously plan your travels by providing comprehensive itinerary options, customizable trip details, and real-time updates.',
     icon: ListBulletIcon,
   },
   {
     name: 'Expenses',
     description:
-      'Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.',
+      'Our app allows you to effortlessly track your expenses by categorizing your spending, setting budget limits, and providing real-time financial insights.',
     icon: CurrencyDollarIcon,
   },
   {
-    name: 'Filler',
+    name: 'Trip Overview',
     description:
-      'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
+      'Our app allows you to view all your trip itineraries in one convenient place, making it easy to manage and access your travel plans. With a streamlined interface, you can quickly review detailed schedules, bookings, and activities for each of your trips.',
     icon: FingerPrintIcon,
   },
   {
     name: 'Reviews',
     description:
-      'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
+      'Our app enables you to see detailed reviews of locations and attractions, offering insights from fellow travelers to help you make informed decisions.',
     icon: NewspaperIcon,
   },
 ]
 
 const Home = () => {
     return (
-        <div className="bg-white py-24 sm:py-32">
+      <div className="relative isolate px-6 pt-14 lg:px-8">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:text-center">
               <h2 className="text-base font-semibold leading-7 text-indigo-600">We got you!</h2>
