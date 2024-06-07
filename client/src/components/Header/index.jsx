@@ -1,42 +1,45 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
+import CoastLogo from "../../assets/plane2.svg";
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
     { name: 'Explore', href: '#' },
+    { name: 'Calendar', href: '/calendar' },
     { name: 'My Trips', href: '#' },
-    { name: 'Marketplace', href: '#' },
 ]
 
-export default function Example() {
+export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
         <header className="bg-white">
             <nav className="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8" aria-label="Global">
                 <div className="flex lg:flex-1">
-                    <a href="#" className="-m-1.5 p-1.5">
+                    <a href="/" className="-m-1.5 p-1.5">
                         <span className="sr-only">Coast to Coast</span>
-                        <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+                        <img className="h-8 w-auto" src={CoastLogo} alt="Coast to Coast Logo" />
                     </a>
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
                     {navigation.map((item) => (
-                        <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+                        <Link key={item.name} to={item.href} className="text-sm font-semibold leading-6 text-gray-900">
                             {item.name}
-                        </a>
+                        </Link>
                     ))}
                 </div>
                 <div className="flex flex-1 items-center justify-end gap-x-6">
-                    <a href="#" className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900">
+                    <Link to="/login" className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900">
                         Log in
-                    </a>
-                    <a
-                        href="#"
+                    </Link>
+                    <Link
+                        to="/signup"
                         className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                         Sign up
-                    </a>
+                    </Link>
                 </div>
                 <div className="flex lg:hidden">
                     <button
@@ -62,7 +65,7 @@ export default function Example() {
                             />
                         </a>
                         <a
-                            href="#"
+                            href="./Signup"
                             className="ml-auto rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
                             Sign up
@@ -91,7 +94,7 @@ export default function Example() {
                             </div>
                             <div className="py-6">
                                 <a
-                                    href="#"
+                                    href="./Login"
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     Log in
