@@ -7,7 +7,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
     { name: 'Explore', href: '#' },
-    { name: 'Calendar', href: './Calendar' },
+    { name: 'Calendar', href: '/calendar' },
     { name: 'My Trips', href: '#' },
 ]
 
@@ -25,21 +25,21 @@ export default function Header() {
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
                     {navigation.map((item) => (
-                        <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+                        <Link key={item.name} to={item.href} className="text-sm font-semibold leading-6 text-gray-900">
                             {item.name}
-                        </a>
+                        </Link>
                     ))}
                 </div>
                 <div className="flex flex-1 items-center justify-end gap-x-6">
-                    <a href="./Login" className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900">
+                    <Link to="/login" className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900">
                         Log in
-                    </a>
-                    <a
-                        href="./Signup"
+                    </Link>
+                    <Link
+                        to="/signup"
                         className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                         Sign up
-                    </a>
+                    </Link>
                 </div>
                 <div className="flex lg:hidden">
                     <button
