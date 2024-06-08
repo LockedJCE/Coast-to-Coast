@@ -23,3 +23,35 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_THOUGHT = gql`
+  mutation addTrip($title: String!) {
+    addTrip(title: $title) {
+      _id
+      title
+      description
+      startDate
+      endDate
+      itineraries
+      expenses
+    }
+  }
+`;
+
+export const REMOVE_TRIP = gql`
+  mutation removeTrip($tripId: ID!) {
+    removeBook(tripId: $tripId) {
+      _id
+      username
+      email
+      trips {
+        title
+        description
+        startDate
+        endDate
+        itineraries
+        expenses
+      }
+    }
+  }
+`;

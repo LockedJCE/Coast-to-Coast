@@ -6,10 +6,44 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
-        _id
-        thoughtText
-        createdAt
+      trips {
+        title
+        description
+        startDate
+        endDate
+        itineraries
+        expenses
+      }
+    }
+  }
+`;
+
+export const QUERY_TRIPS = gql`
+  query getTrips {
+    trips {
+        title
+        description
+        startDate
+        endDate
+        itineraries
+        expenses
+      }
+  }
+`;
+
+export const QUERY_SINGLE_TRIP = gql`
+  query getSingleTrip($tripId: ID!) {
+    trip(tripId: $tripId) {
+      _id
+      username
+      email
+      trips {
+        title
+        description
+        startDate
+        endDate
+        itineraries
+        expenses
       }
     }
   }
@@ -21,6 +55,14 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      trips {
+        title
+        description
+        startDate
+        endDate
+        itineraries
+        expenses
+      }
     }
   }
 `;
