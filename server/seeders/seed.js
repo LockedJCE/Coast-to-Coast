@@ -20,120 +20,95 @@ const seedData = async () => {
       {
         username: 'john_doe',
         email: 'john@example.com',
-        password: 'password123', // Note: Password should be hashed in real scenarios
+        password: 'password123', // Not hashed
       },
       {
         username: 'jane_doe',
         email: 'jane@example.com',
-        password: 'password123', // Note: Password should be hashed in real scenarios
+        password: 'password123', // Not hashed
       },
     ]);
 
-    // Create Trips
-    const trips = await Trip.insertMany([
-      {
-        user: users[0]._id,
-        title: 'Trip to New York',
-        description: 'A fun trip to New York City.',
-        startDate: new Date('2023-06-01'),
-        endDate: new Date('2023-06-07'),
-      },
-      {
-        user: users[1]._id,
-        title: 'Trip to Paris',
-        description: 'A romantic trip to Paris.',
-        startDate: new Date('2023-07-15'),
-        endDate: new Date('2023-07-22'),
-      },
-    ]);
+    // Create trips, itineraries, activities, and expenses
+    const createTripsForUser = async (user) => {
+      const trips = await Trip.insertMany([
+        {
+          user: user._id,
+          title: 'Trip to New York',
+          description: 'A fun trip to New York City.',
+          startDate: new Date('2023-06-01'),
+          endDate: new Date('2023-06-07'),
+        },
+        {
+          user: user._id,
+          title: 'Trip to Paris',
+          description: 'A romantic trip to Paris.',
+          startDate: new Date('2023-07-15'),
+          endDate: new Date('2023-07-22'),
+        },
+      ]);
 
-    // Create Itineraries
-    const itineraries = await Itinerary.insertMany([
-      {
-        trip: trips[0]._id,
-        date: new Date('2023-06-01'),
-      },
-      {
-        trip: trips[0]._id,
-        date: new Date('2023-06-02'),
-      },
-      {
-        trip: trips[1]._id,
-        date: new Date('2023-07-15'),
-      },
-      {
-        trip: trips[1]._id,
-        date: new Date('2023-07-16'),
-      },
-    ]);
+      // Update user's trips array
+      await User.findByIdAndUpdate(user._id, { $push: { trips: { $each: trips.map(trip => trip._id) } } });
 
-    // Create Activities
-    const activities = await Activity.insertMany([
-      {
-        itinerary: itineraries[0]._id,
-        title: 'Visit Central Park',
-        description: 'A relaxing stroll through Central Park.',
-        location: 'New York City',
-        startTime: new Date('2023-06-01T09:00:00'),
-        endTime: new Date('2023-06-01T12:00:00'),
-      },
-      {
-        itinerary: itineraries[1]._id,
-        title: 'Broadway Show',
-        description: 'Watch a Broadway show.',
-        location: 'New York City',
-        startTime: new Date('2023-06-02T19:00:00'),
-        endTime: new Date('2023-06-02T22:00:00'),
-      },
-      {
-        itinerary: itineraries[2]._id,
-        title: 'Eiffel Tower Visit',
-        description: 'Visit the Eiffel Tower.',
-        location: 'Paris',
-        startTime: new Date('2023-07-15T10:00:00'),
-        endTime: new Date('2023-07-15T12:00:00'),
-      },
-      {
-        itinerary: itineraries[3]._id,
-        title: 'Seine River Cruise',
-        description: 'Cruise along the Seine River.',
-        location: 'Paris',
-        startTime: new Date('2023-07-16T14:00:00'),
-        endTime: new Date('2023-07-16T16:00:00'),
-      },
-    ]);
+      for (const trip of trips) {
+        const itineraries = await Itinerary.insertMany([
+          {
+            trip: trip._id,
+            date: new Date(trip.startDate),
+          },
+          {
+            trip: trip._id,
+            date: new Date(new Date(trip.startDate).setDate(new Date(trip.startDate).getDate() + 1)),
+          },
+        ]);
 
-    // Create Expenses
-    const expenses = await Expense.insertMany([
-      {
-        trip: trips[0]._id,
-        description: 'Flight to New York',
-        amount: 350.00,
-        date: new Date('2023-05-31'),
-        category: 'Transportation',
-      },
-      {
-        trip: trips[1]._id,
-        description: 'Hotel in Paris',
-        amount: 700.00,
-        date: new Date('2023-07-14'),
-        category: 'Accommodation',
-      },
-      {
-        trip: trips[0]._id,
-        description: 'Broadway Show Tickets',
-        amount: 150.00,
-        date: new Date('2023-06-01'),
-        category: 'Entertainment',
-      },
-      {
-        trip: trips[1]._id,
-        description: 'Seine River Cruise Tickets',
-        amount: 50.00,
-        date: new Date('2023-07-15'),
-        category: 'Entertainment',
-      },
-    ]);
+        // Update trip's itineraries array
+        await Trip.findByIdAndUpdate(trip._id, { $push: { itineraries: { $each: itineraries.map(itinerary => itinerary._id) } } });
+
+        for (const itinerary of itineraries) {
+          const activities = await Activity.insertMany([
+            {
+              itinerary: itinerary._id,
+              title: 'Visit Central Park',
+              description: 'A relaxing stroll through Central Park.',
+              location: 'New York City',
+              startTime: new Date(new Date(itinerary.date).setHours(9, 0, 0)),
+              endTime: new Date(new Date(itinerary.date).setHours(12, 0, 0)),
+            },
+            {
+              itinerary: itinerary._id,
+              title: 'Broadway Show',
+              description: 'Watch a Broadway show.',
+              location: 'New York City',
+              startTime: new Date(new Date(itinerary.date).setHours(19, 0, 0)),
+              endTime: new Date(new Date(itinerary.date).setHours(22, 0, 0)),
+            },
+          ]);
+
+          // Update itinerary's activities array
+          await Itinerary.findByIdAndUpdate(itinerary._id, { $push: { activities: { $each: activities.map(activity => activity._id) } } });
+
+          for (const activity of activities) {
+            const expense = await Expense.create({
+              trip: trip._id,
+              activity: activity._id,
+              description: `${activity.title} Tickets`,
+              amount: activity.title.includes('Show') ? 150.00 : 50.00,
+              date: new Date(activity.startTime),
+              category: 'Entertainment',
+            });
+
+            // Update activity's expense field
+            await Activity.findByIdAndUpdate(activity._id, { expense: expense._id });
+          }
+        }
+      }
+    };
+
+    // Create trips for each user
+    await createTripsForUser(users[0]);
+    await createTripsForUser(users[1]);
 
     console.log('Seed data inserted successfully');
     process.exit(0);
@@ -143,5 +118,4 @@ const seedData = async () => {
   }
 };
 
-// Ensure that the connection is open before running the seed data
 db.once('open', seedData);
