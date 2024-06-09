@@ -36,15 +36,15 @@ const seedData = async () => {
           user: user._id,
           title: 'Trip to New York',
           description: 'A fun trip to New York City.',
-          startDate: new Date('2023-06-01'),
-          endDate: new Date('2023-06-07'),
+          startDate: new Date('2024-07-01'),
+          endDate: new Date('2024-07-07'),
         },
         {
           user: user._id,
           title: 'Trip to Paris',
           description: 'A romantic trip to Paris.',
-          startDate: new Date('2023-07-15'),
-          endDate: new Date('2023-07-22'),
+          startDate: new Date('2024-07-15'),
+          endDate: new Date('2024-07-22'),
         },
       ]);
 
