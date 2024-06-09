@@ -8,7 +8,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 const navigation = [
     { name: 'Explore', href: '#' },
     { name: 'Calendar', href: '/calendar' },
-    { name: 'My Trips', href: '#' },
+    { name: 'My Trips', href: '/me' },
 ]
 
 export default function Header() {
