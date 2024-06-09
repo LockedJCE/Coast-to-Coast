@@ -42,6 +42,7 @@ const Login = (props) => {
 
   return (
     <>
+    {/* Login section labels */}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -54,6 +55,7 @@ const Login = (props) => {
           </h2>
         </div>
 
+      {/* Links back to homepage if succesfull  */}
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           {data ? (
             <p>
@@ -63,6 +65,7 @@ const Login = (props) => {
           ) : (
             <form className="space-y-6"  >
               <div>
+                {/* Email Section */}
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                   Email address
                 </label>
@@ -81,6 +84,7 @@ const Login = (props) => {
 
               <div>
                 <div className="flex items-center justify-between">
+                  {/* Password Section */}
                   <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                     Password
                   </label>
@@ -104,6 +108,7 @@ const Login = (props) => {
               </div>
 
               <div>
+                {/* Submit Button */}
                 <button
                   onClick={handleFormSubmit}
                   type="button"
