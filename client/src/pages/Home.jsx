@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { CurrencyDollarIcon, FingerPrintIcon, ListBulletIcon, NewspaperIcon } from '@heroicons/react/24/outline'
 import CoastLogo from "../assets/SVG1.svg";
-import Hero from '../components/Hero';
 
 const features = [
   {
