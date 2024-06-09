@@ -11,8 +11,12 @@ const navigation = [
     { name: 'My Trips', href: '/me' },
 ]
 
-export default function Header() {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+const Header = () => {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const logout = (event) => {
+        event.preventDefault();
+        Auth.logout();
+    };
 
     return (
         <header className="bg-white">
@@ -31,15 +35,28 @@ export default function Header() {
                     ))}
                 </div>
                 <div className="flex flex-1 items-center justify-end gap-x-6">
-                    <Link to="/login" className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900">
-                        Log in
-                    </Link>
-                    <Link
-                        to="/signup"
-                        className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                        Sign up
-                    </Link>
+                    {Auth.loggedIn() ? (
+                        <>
+                            <Link
+                                onClick={logout}
+                                className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            >
+                                Log out
+                            </Link>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/login" className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900">
+                                Log in
+                            </Link>
+                            <Link
+                                to="/signup"
+                                className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            >
+                                Sign up
+                            </Link>
+                        </>
+                    )}
                 </div>
                 <div className="flex lg:hidden">
                     <button
@@ -105,5 +122,7 @@ export default function Header() {
                 </DialogPanel>
             </Dialog>
         </header>
-    )
-}
+    );
+};
+
+export default Header; 
