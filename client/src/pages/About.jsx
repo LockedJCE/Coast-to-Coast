@@ -4,37 +4,39 @@ import travel2 from "../assets/travel2.jpg";
 import travel3 from "../assets/travel3.jpg";
 import travel4 from "../assets/travel4.jpg";
 import travel5 from "../assets/travel5.jpg";
+import globe from "../assets/globe.jpg";
+import group from "../assets/group.jpg";
 
 const values = [
     {
-        name: 'Filler',
+        name: 'User-Centric Design',
         description:
-            'Aut illo quae. Ut et harum ea animi natus. Culpa maiores et sed sint et magnam exercitationem quia. Ullam voluptas nihil vitae dicta molestiae et. Aliquid velit porro vero.',
+            'At the core of our platform is a commitment to our users. We prioritize creating an intuitive and seamless experience, ensuring that everyone, regardless of their tech-savviness, can effortlessly plan and manage their travels. Our design philosophy revolves around simplicity and accessibility, making travel planning a delight rather than a chore.',
     },
     {
-        name: 'Filler',
+        name: 'Innovation and Adaptability',
         description:
-            'Mollitia delectus a omnis. Quae velit aliquid. Qui nulla maxime adipisci illo id molestiae. Cumque cum ut minus rerum architecto magnam consequatur. Quia quaerat minima.',
+            'The travel industry is constantly evolving, and so are we. We embrace innovation and continuously update our platform with cutting-edge features and the latest travel trends. Our adaptability ensures that we meet the changing needs of our users, providing them with the most relevant and effective tools for their travel planning.',
     },
     {
-        name: 'Filler',
+        name: 'Comprehensive Resources',
         description:
-            'Aut repellendus et officiis dolor possimus. Deserunt velit quasi sunt fuga error labore quia ipsum. Commodi autem voluptatem nam. Quos voluptatem totam.',
+            'We believe that well-informed travelers make the best journeys. Our website offers a wealth of resources, from detailed destination guides to personalized recommendations. We strive to provide all the information our users need to plan unforgettable trips, all in one convenient place.',
     },
     {
-        name: 'Filler',
+        name: 'Community and Connection',
         description:
-            'Magnam provident veritatis odit. Vitae eligendi repellat non. Eum fugit impedit veritatis ducimus. Non qui aspernatur laudantium modi. Praesentium rerum error deserunt harum.',
+            'Travel is about more than just destinations; its about the connections we make along the way. We foster a vibrant community of travelers who share their experiences, tips, and insights. By facilitating these connections, we help our users feel more confident and inspired as they plan their adventures.',
     },
     {
-        name: 'Filler',
+        name: 'Sustainability and Responsibility',
         description:
-            'Sit minus expedita quam in ullam molestiae dignissimos in harum. Tenetur dolorem iure. Non nesciunt dolorem veniam necessitatibus laboriosam voluptas perspiciatis error.',
+            'We are committed to promoting responsible travel. Our platform encourages eco-friendly travel options and provides information on sustainable practices. We believe in preserving the beauty of our planet for future generations and helping our users make environmentally conscious travel choices.',
     },
     {
-        name: 'Filler',
+        name: 'Integrity and Transparency',
         description:
-            'Ipsa in earum deserunt aut. Quos minus aut animi et soluta. Ipsum dicta ut quia eius. Possimus reprehenderit iste aspernatur ut est velit consequatur distinctio.',
+            'Trust is the foundation of our relationship with our users. We maintain the highest standards of integrity and transparency in all our operations. Our users can rely on us for accurate information, honest recommendations, and clear communication. By building a trustworthy platform, we ensure our users can plan their travels with confidence and peace of mind.',
     },
 ]
 const team = [
@@ -58,36 +60,6 @@ const team = [
     },
 ]
 
-const timeline = [
-    {
-        name: 'Founded company',
-        description:
-            'Nihil aut nam. Dignissimos a pariatur et quos omnis. Aspernatur asperiores et dolorem dolorem optio voluptate repudiandae.',
-        date: 'Aug 2021',
-        dateTime: '2021-08',
-    },
-    {
-        name: 'Secured $65m in funding',
-        description:
-            'Provident quia ut esse. Vero vel eos repudiandae aspernatur. Cumque minima impedit sapiente a architecto nihil.',
-        date: 'Dec 2021',
-        dateTime: '2021-12',
-    },
-    {
-        name: 'Released beta',
-        description:
-            'Sunt perspiciatis incidunt. Non necessitatibus aliquid. Consequatur ut officiis earum eum quia facilis. Hic deleniti dolorem quia et.',
-        date: 'Feb 2022',
-        dateTime: '2022-02',
-    },
-    {
-        name: 'Global launch of product',
-        description:
-            'Ut ipsa sint distinctio quod itaque nam qui. Possimus aut unde id architecto voluptatem hic aut pariatur velit.',
-        date: 'Dec 2022',
-        dateTime: '2022-12',
-    },
-]
 
 const About = () => {
     return (
@@ -196,60 +168,34 @@ const About = () => {
                 </div>
             </div>
 
-            {/* Timeline section */}
-            {/* <div className="mx-auto -mt-8 max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-8 overflow-hidden lg:mx-0 lg:max-w-none lg:grid-cols-4">
-            {timeline.map((item) => (
-              <div key={item.name}>
-                <time
-                  dateTime={item.dateTime}
-                  className="flex items-center text-sm font-semibold leading-6 text-indigo-600"
-                >
-                  <svg viewBox="0 0 4 4" className="mr-4 h-1 w-1 flex-none" aria-hidden="true">
-                    <circle cx={2} cy={2} r={2} fill="currentColor" />
-                  </svg>
-                  {item.date}
-                  <div
-                    className="absolute -ml-2 h-px w-screen -translate-x-full bg-gray-900/10 sm:-ml-4 lg:static lg:-mr-6 lg:ml-8 lg:w-auto lg:flex-auto lg:translate-x-0"
-                    aria-hidden="true"
-                  />
-                </time>
-                <p className="mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900">{item.name}</p>
-                <p className="mt-1 text-base leading-7 text-gray-600">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div> */}
-
             {/* Content section */}
             <div className="mx-auto -mt-12 max-w-7xl px-6 sm:mt-0 lg:px-8 xl:-mt-auto">
                 <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our mission</h2>
+                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Goal</h2>
                     <div className="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
                         <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
                             <p className="text-xl leading-8 text-gray-600">
-                                Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam
-                                eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget.
-                                Eleifend egestas fringilla sapien.
+                                At Coast-to-Coast, our goal is to revolutionize the way people plan their travels.
+                                We strive to offer a seamless, user-friendly platform that allows travelers to create, customize, and share detailed travel itineraries effortlessly.
+                                By providing a comprehensive set of tools and resources, we aim to empower users to maximize their travel experiences, ensuring every journey is memorable and stress-free.
                             </p>
                             <div className="mt-10 max-w-xl text-base leading-7 text-gray-700">
                                 <p>
-                                    Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed
-                                    amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius
-                                    sit neque erat velit. Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-                                    Mattis mauris semper sed amet vitae sed turpis id.
+                                    We understand that planning a trip can be overwhelming and time-consuming.
+                                    That’s why we’ve designed our website to be intuitive and easy to navigate, catering to both seasoned travelers and those embarking on their first adventure.
+                                    By simplifying the planning process, we help our users save time and focus on what truly matters: enjoying their travels.
                                 </p>
                                 <p className="mt-10">
-                                    Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis odio id et. Id blandit molestie
-                                    auctor fermentum dignissim. Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate et
-                                    ultrices hac adipiscing egestas. Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.
+                                    Our commitment extends beyond just providing an itinerary creation tool.
+                                    We continuously update our platform with the latest travel trends, tips, and destination guides, ensuring our users have access to the most relevant and up-to-date information.
+                                    With Coast-to-Coast, we aim to be your trusted partner in every step of your journey, making travel planning as exciting and enjoyable as the trip itself.
                                 </p>
                             </div>
                         </div>
                         <div className="lg:flex lg:flex-auto lg:justify-center">
                             <dl className="w-64 space-y-8 xl:w-80">
                                 <img
-                                    src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1344&h=1104&q=80"
+                                    src={globe}
                                     alt=""
                                     className="mt-0 aspect-[6/5] w-full rounded-2xl bg-gray-50 object-cover lg:aspect-auto lg:h-[34.5rem]"
                                 />
@@ -262,7 +208,7 @@ const About = () => {
             {/* Image section */}
             <div className="mt-32 sm:mt-40 xl:mx-auto xl:max-w-7xl xl:px-8">
                 <img
-                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+                    src={group}
                     alt=""
                     className="aspect-[5/2] w-full object-cover xl:rounded-3xl"
                 />
@@ -273,8 +219,7 @@ const About = () => {
                 <div className="mx-auto max-w-2xl lg:mx-0">
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our values</h2>
                     <p className="mt-6 text-lg leading-8 text-gray-600">
-                        Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in
-                        accusamus quisquam.
+                    At Coast-to-Coast, our values guide every aspect of our work, ensuring we deliver the best possible experience for our users. Here’s a glimpse into the principles that drive us:
                     </p>
                 </div>
                 <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -292,8 +237,8 @@ const About = () => {
                 <div className="mx-auto max-w-2xl lg:mx-0">
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our team</h2>
                     <p className="mt-6 text-lg leading-8 text-gray-600">
-                        Sit facilis neque ab nulla vel. Cum eos in laudantium. Temporibus eos totam in dolorum. Nemo vel facere
-                        repellendus ut eos dolores similique.
+                        Meet the dedicated team behind Coast-to-Coast! Our passionate and experienced members work tirelessly to bring you the best travel planning experience.
+                        Get to know the innovators making your journeys unforgettable.
                     </p>
                 </div>
                 <ul
