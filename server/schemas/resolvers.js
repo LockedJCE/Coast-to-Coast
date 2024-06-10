@@ -6,29 +6,20 @@ const resolvers = {
   Query: {
     me: async (_, __, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({
+        return await User.findById(context.user._id).populate({
           path: 'trips',
           populate: [
-            {
-              path: 'user',
-              select: 'username',
-            },
+            { path: 'user', select: 'username' },
             {
               path: 'itineraries',
               populate: {
                 path: 'activities',
-                populate: {
-                  path: 'expense',
-                },
-              },
+                populate: { path: 'expense' }
+              }
             },
-            {
-              path: 'expenses',
-            },
-          ],
+            { path: 'expenses' }
+          ]
         });
-        console.log('User fetched:', user);
-        return user;
       }
       throw new AuthenticationError('Not logged in');
     },
@@ -37,19 +28,16 @@ const resolvers = {
         return await User.find({}).populate({
           path: 'trips',
           populate: [
+            { path: 'user', select: 'username' },
             {
               path: 'itineraries',
               populate: {
                 path: 'activities',
-                populate: {
-                  path: 'expense',
-                },
-              },
+                populate: { path: 'expense' }
+              }
             },
-            {
-              path: 'expenses',
-            },
-          ],
+            { path: 'expenses' }
+          ]
         });
       }
       throw new AuthenticationError('Not logged in');
@@ -59,19 +47,16 @@ const resolvers = {
         return await User.findOne({ username }).populate({
           path: 'trips',
           populate: [
+            { path: 'user', select: 'username' },
             {
               path: 'itineraries',
               populate: {
                 path: 'activities',
-                populate: {
-                  path: 'expense',
-                },
-              },
+                populate: { path: 'expense' }
+              }
             },
-            {
-              path: 'expenses',
-            },
-          ],
+            { path: 'expenses' }
+          ]
         });
       }
       throw new AuthenticationError('Not logged in');
@@ -79,80 +64,56 @@ const resolvers = {
     trips: async (_, __, context) => {
       if (context.user) {
         return await Trip.find({}).populate([
-          {
-            path: 'user',
-            select: 'username',
-          },
+          { path: 'user', select: 'username' },
           {
             path: 'itineraries',
             populate: {
               path: 'activities',
-              populate: {
-                path: 'expense',
-              },
-            },
+              populate: { path: 'expense' }
+            }
           },
-          {
-            path: 'expenses',
-          },
+          { path: 'expenses' }
         ]);
       }
       throw new AuthenticationError('Not logged in');
     },
-    trip: async (_, { tripId }, context) => {
+    trip: async (_, { id }, context) => {
       if (context.user) {
-        const trip = await Trip.findById(tripId).populate([
-          {
-            path: 'user',
-            select: 'username',
-          },
+        return await Trip.findById(id).populate([
+          { path: 'user', select: 'username' },
           {
             path: 'itineraries',
             populate: {
               path: 'activities',
-              populate: {
-                path: 'expense',
-              },
-            },
+              populate: { path: 'expense' }
+            }
           },
-          {
-            path: 'expenses',
-          },
+          { path: 'expenses' }
         ]);
-        console.log('Trip fetched:', trip);
-        return trip;
       }
       throw new AuthenticationError('Not logged in');
     },
     itineraries: async (_, { tripId }, context) => {
       if (context.user) {
-        const itineraries = await Itinerary.find({ trip: tripId }).populate('activities');
-        console.log('Itineraries fetched:', itineraries);
-        return itineraries;
+        return await Itinerary.find({ trip: tripId }).populate('activities');
       }
       throw new AuthenticationError('Not logged in');
     },
     itinerary: async (_, { id }, context) => {
       if (context.user) {
-        const itinerary = await Itinerary.findById(id).populate('activities');
-        console.log('Itinerary fetched:', itinerary);
-        return itinerary;
+        return await Itinerary.findById(id).populate('activities');
       }
       throw new AuthenticationError('Not logged in');
     },
     activities: async (_, { itineraryId }, context) => {
       if (context.user) {
-        const activities = await Activity.find({ itinerary: itineraryId }).populate('expense');
-        console.log('Activities fetched:', activities);
-        return activities;
+        return await Activity.find({ itinerary: itineraryId }).populate('expense');
       }
       throw new AuthenticationError('Not logged in');
     },
     activity: async (_, { id }, context) => {
       if (context.user) {
-        const activity = await Activity.findById(id).populate('expense');
-        console.log('Activity fetched:', activity);
-        return activity;
+        return await Activity.findById(id).populate('expense');
       }
       throw new AuthenticationError('Not logged in');
     },
