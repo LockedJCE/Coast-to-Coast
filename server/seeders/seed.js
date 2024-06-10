@@ -16,18 +16,27 @@ const seedData = async () => {
     await Expense.deleteMany({});
 
     // Create Users
-    const users = await User.insertMany([
+    const usersData = [
       {
         username: 'john_doe',
         email: 'john@example.com',
-        password: 'password123', // Not hashed
+        password: 'password123',
       },
       {
         username: 'jane_doe',
         email: 'jane@example.com',
-        password: 'password123', // Not hashed
+        password: 'password123',
       },
-    ]);
+    ];
+
+    const users = [];
+
+    // This will trigger the pre save hook to hash the password, should fix our login issues with these users
+    for (const userData of usersData) {
+      const user = new User(userData);
+      await user.save();
+      users.push(user);
+    }
 
     // Create trips, itineraries, activities, and expenses
     const createTripsForUser = async (user) => {
