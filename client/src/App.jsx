@@ -9,7 +9,7 @@ import { Outlet } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import './App.css'
+import './App.css';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -39,10 +39,10 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Header />
-        <Outlet />
+      <Outlet /> {/* This will render the child routes */}
       <Footer />
     </ApolloProvider>
-  )
+  );
 }
 
-export default App
+export default App;

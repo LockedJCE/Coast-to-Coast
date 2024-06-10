@@ -1,16 +1,13 @@
-import { Navigate, useParams } from 'react-router-dom';
+import React from 'react';
+import { Navigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import TripList from '../components/TripList';
-
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
-
+import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const Profile = () => {
-    // const { username: userParam } = useParams();
-
-
+    // Check if the user is logged in
     if (!Auth.loggedIn()) {
         return (
             <h4>
@@ -20,25 +17,20 @@ const Profile = () => {
         );
     }
 
-    const { loading, data } = useQuery( QUERY_ME)
-        
-    
+    // Get the current user's data
+    const { loading, error, data } = useQuery(QUERY_ME);
 
-    const user = data?.me  || {};
-    console.log (user)
-    // if (
-    //     Auth.loggedIn() &&
-    //     /* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's username, and compare it to the userParam variable */
-    //     Auth.getProfile().authenticatedPerson.username === userParam
-    // ) {
-    //     return <Navigate to="/me" />;
-    // }
-
+    // Handle loading state
     if (loading) {
         return <div>Loading...</div>;
     }
 
-    
+    // Handle error state
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+
+    const user = data?.me || {};
 
     return (
         <div>
@@ -46,7 +38,7 @@ const Profile = () => {
                 <h2 className="">
                     Viewing your trips.
                 </h2>
-                <TripList trips={user.trips}/>
+                <TripList trips={user.trips} />
                 <div className="">
                 </div>
             </div>
