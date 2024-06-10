@@ -1,15 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { formatDate } from '../../utils/formatDate'; // Import the formatDate function
 
 const TripList = ({ trips }) => {
   if (!trips.length) {
     return <h3>No Trips Yet</h3>;
   }
-
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
 
   return (
     <div>
