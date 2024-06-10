@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 
 const TripList = ({
     trips,
-    title,
-    showTitle = true,
-    showUsername = true,
+   
+    
 }) => {
     if (!trips.length) {
         return <h3>No Trips Yet</h3>;
@@ -13,7 +12,7 @@ const TripList = ({
 
     return (
         <div>
-            {showTitle && <h3>{title}</h3>}
+            
             <ul role="list" className="divide-y divide-gray-100">
             {trips &&
                 trips.map((trip) => (

@@ -4,6 +4,11 @@ const { User, Trip, Itinerary, Activity, Expense } = require('../models');
 
 const resolvers = {
   Query: {
+    me: async (_,__, context) => {
+      if (context.user)
+        return await User.findById(context.user._id)
+      throw AuthenticationError
+    },
     users: async (_, __, context) => {
       if (context.user)
         return await User.find({})

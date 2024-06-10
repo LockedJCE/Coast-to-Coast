@@ -50,19 +50,44 @@ export const QUERY_SINGLE_TRIP = gql`
 `;
 
 export const QUERY_ME = gql`
-  query me {
-    me {
+query Me {
+  me {
+    _id
+    username
+    email
+    trips {
       _id
-      username
-      email
-      trips {
-        title
+      title
+      description
+      startDate
+      endDate
+      itineraries {
+        _id
+        date
+        activities {
+          _id
+          title
+          description
+          location
+          startTime
+          endTime
+          expense {
+            _id
+            description
+            amount
+            date
+            category
+          }
+        }
+      }
+      expenses {
+        _id
         description
-        startDate
-        endDate
-        itineraries
-        expenses
+        amount
+        date
+        category
       }
     }
   }
+}
 `;
