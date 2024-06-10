@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Error from './pages/Error';
 import About from './pages/About';
+import TripList from './components/TripList/index.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
         path: '/me',
         element: <Profile />
       }
+      
     ]
   }
 ])

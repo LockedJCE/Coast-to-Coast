@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { CurrencyDollarIcon, FingerPrintIcon, ListBulletIcon, NewspaperIcon } from '@heroicons/react/24/outline'
 import CoastLogo from "../assets/SVG1.svg";
+import Auth from '../utils/auth';
 
 const features = [
   {
@@ -31,6 +32,8 @@ const features = [
 
 const Home = () => {
     return (
+      <>
+      {Auth.loggedIn()?(window.location.assign("/me")):(
       <div className="relative isolate px-6 pt-14 lg:px-8">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:text-center">
@@ -60,6 +63,8 @@ const Home = () => {
             </div>
           </div>
         </div>
+        )}
+        </>
       )
 };
 
