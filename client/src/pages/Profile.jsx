@@ -34,8 +34,8 @@ const Profile = () => {
 
     return (
         <div>
-            <div className="">
-                <h2 className="">
+            <div className="mx-10">
+                <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                     Viewing your trips.
                 </h2>
                 <TripList trips={user.trips} />
