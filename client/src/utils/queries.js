@@ -45,6 +45,7 @@ export const QUERY_USER = gql`
 export const QUERY_TRIPS = gql`
   query getTrips {
     trips {
+      _id
       title
       description
       startDate
@@ -81,41 +82,40 @@ export const QUERY_TRIPS = gql`
 
 export const QUERY_SINGLE_TRIP = gql`
   query getSingleTrip($tripId: ID!) {
-    trip(tripId: $tripId) {
+    trip(id: $tripId) {
       _id
-      username
-      email
-      trips {
-        title
-        description
-        startDate
-        endDate
-        itineraries {
+      title
+      description
+      startDate
+      endDate
+      user {
+        username
+      }
+      itineraries {
+        _id
+        date
+        activities {
           _id
-          date
-          activities {
+          title
+          description
+          location
+          startTime
+          endTime
+          expense {
             _id
-            title
             description
-            location
-            startTime
-            endTime
-            expense {
-              _id
-              description
-              amount
-              date
-              category
-            }
+            amount
+            date
+            category
           }
         }
-        expenses {
-          _id
-          description
-          amount
-          date
-          category
-        }
+      }
+      expenses {
+        _id
+        description
+        amount
+        date
+        category
       }
     }
   }

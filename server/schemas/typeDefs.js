@@ -22,7 +22,6 @@ const typeDefs = gql`
   type Itinerary {
     _id: ID!
     date: String!
-    trip: Trip
     activities: [Activity]
   }
 
@@ -33,7 +32,6 @@ const typeDefs = gql`
     location: String
     startTime: String!
     endTime: String!
-    itinerary: Itinerary
     expense: Expense
   }
 
@@ -43,8 +41,6 @@ const typeDefs = gql`
     amount: Float!
     date: String!
     category: String!
-    trip: Trip
-    activity: Activity
   }
 
   type Auth {
@@ -57,7 +53,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     trips: [Trip]
-    trip(tripId: ID!): Trip
+    trip(id: ID!): Trip
     itineraries(tripId: ID!): [Itinerary]
     itinerary(id: ID!): Itinerary
     activities(itineraryId: ID!): [Activity]
